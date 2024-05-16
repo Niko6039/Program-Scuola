@@ -2,7 +2,7 @@ public class Studente {
     private String nome;
     private String cognome;
     private String matricula;
-    private String email;ù
+    private String email;
 
     public Studente() {}
 
