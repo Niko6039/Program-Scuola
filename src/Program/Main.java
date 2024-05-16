@@ -18,13 +18,13 @@ public class Main {
             while (scanFile.hasNextLine()) {
                 Studente std = new Studente();
                 line = scanFile.nextLine();
-                nome = line.split(",")[0];
+                nome = line.split(", ")[0];
                 std.setNome(nome);
                 cognome = line.split(", ")[1];
                 std.setCognome(cognome);
                 matricola = line.split(", ")[2];
                 std.setMatricula(matricola);
-                email = line.split(", ")[3];
+                email = line.split(",")[3];
                 std.setEmail(email);
                 Studenti.add(std);
             }
@@ -33,5 +33,7 @@ public class Main {
             System.out.println(e);
             e.printStackTrace();
         }
+        System.out.println(Studenti.get(0).getCognome());
+        MyFrame frame = new MyFrame("Studenti", Studenti);
     }
 }

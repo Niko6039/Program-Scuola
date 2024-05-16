@@ -40,6 +40,6 @@ public class Studente {
         this.email = email;
     }
     public String toString() {
-        return nome + " " + cognome + " " + matricula + " " + email;
+        return nome + ", " + cognome + ", " + matricula + ", " + email;
     }
 }
