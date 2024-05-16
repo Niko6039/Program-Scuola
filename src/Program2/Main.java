@@ -10,7 +10,7 @@ public class Main {
         ArrayList<Brano> Brani = new ArrayList<>();
 
         try {
-            FileReader lettBraniSave = new FileReader(path + "testo.txt");
+            FileReader lettBraniSave = new FileReader(path + "braniSave");
             Scanner scanFile = new Scanner(lettBraniSave);
             String nome, artista, genere;
             String line = "";
