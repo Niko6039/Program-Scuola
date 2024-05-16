@@ -13,29 +13,21 @@ public class Main {
         try {
             FileReader lettStud = new FileReader(path + "testo.txt");
             Scanner scanFile = new Scanner(lettStud);
-            String x; //Variabile che serve per settare nome, cogn, N.Matricola, email
+            String nome, cognome, matricola, email; //Variabile che serve per settare nome, cogn, N.Matricola, email
+            String line = "";
             while (scanFile.hasNextLine()) {
-                String line = scanFile.nextLine();
                 Studente std = new Studente();
-
-                if (line.startsWith("Nome: ")) {
-                    x = line.split(",")[0] + "\n";
-                    std.setNome(x);
-                } else if (line.startsWith("Cognome: ")) {
-                    x = line.split(",")[1] + "\n";
-                    std.setCognome(x);
-                } else if (line.startsWith("Matricola: ")) {
-                    x = line.split(",")[2] + "\n";
-                    std.setMatricula(x);
-
-                }else if (line.startsWith("Email: ")) {
-                    x = line.split(",")[3] + "\n";
-                    std.setEmail(x);
-                }else {
-
-                }
+                line = scanFile.nextLine();
+                nome = line.split(",")[0];
+                std.setNome(nome);
+                cognome = line.split(", ")[1];
+                std.setCognome(cognome);
+                matricola = line.split(", ")[2];
+                std.setMatricula(matricola);
+                email = line.split(", ")[3];
+                std.setEmail(email);
+                Studenti.add(std);
             }
-
             lettStud.close();
         }catch (Exception e) {
             System.out.println(e);
