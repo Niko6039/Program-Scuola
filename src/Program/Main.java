@@ -1,5 +1,6 @@
+package Program;
+
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,8 +30,7 @@ public class Main {
 
                 }else if (line.startsWith("Email: ")) {
                     x = line.split(",")[3] + "\n";
-                    std.setemail(x);
-
+                    std.setEmail(x);
                 }else {
 
                 }

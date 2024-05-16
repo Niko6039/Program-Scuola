@@ -1,3 +1,5 @@
+package Program;
+
 public class Studente {
     private String nome;
     private String cognome;
@@ -33,5 +35,8 @@ public class Studente {
     public String getEmail() {
         email = nome + "." + cognome + "@lol.it";
         return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
