@@ -30,6 +30,11 @@ public class MyFrame extends JFrame {
         barraBut.setBackground(new java.awt.Color(40, 154, 215));
         barraBut.setLayout(new FlowLayout());
 
+        //Set il pannello di decorazione
+        panelSupp = new JPanel();
+        panelSupp.setBackground(new Color(40, 154, 215));
+        add(panelSupp, BorderLayout.CENTER);
+
         //set Combo Box dei studenti file
         comboBoxStd = new JComboBox<>();
         DefaultComboBoxModel ComBstd = new DefaultComboBoxModel();
