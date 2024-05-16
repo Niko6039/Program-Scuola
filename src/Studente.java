@@ -1,10 +1,10 @@
-package Program;
-
 public class Studente {
     private String nome;
     private String cognome;
     private String matricula;
-    private String email;
+    private String email;ù
+
+    public Studente() {}
 
     public Studente(String nome, String cognome, String matricula, String email) {
         this.nome = nome;
@@ -31,9 +31,7 @@ public class Studente {
         this.matricula = matricula;
     }
     public String getEmail() {
+        email = nome + "." + cognome + "@lol.it";
         return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
