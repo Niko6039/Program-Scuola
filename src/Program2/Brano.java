@@ -23,7 +23,6 @@ public class Brano {
     String getGenere() {
         return genere;
     }
-    @Override
     public String toString() {
         return nomeBrano + ", " + artista + ", " + genere;
     }
