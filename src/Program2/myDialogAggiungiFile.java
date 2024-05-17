@@ -34,6 +34,7 @@ public class myDialogAggiungiFile extends JDialog {
         txtGenere = new JTextField();
         txtGenere.setLayout(new FlowLayout());
 
+        //Set layout
         panelDati.add(nome);
         panelDati.add(txtNome);
         panelDati.add(artista);
