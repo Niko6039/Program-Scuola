@@ -84,6 +84,7 @@ public class MyFrame extends JFrame {
         //Aggiungi un brano a mano
         aggiungiBrano.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                myDialogAggiungiFile dialog1 = new myDialogAggiungiFile(brani,allBrani);
 
             }
         });
