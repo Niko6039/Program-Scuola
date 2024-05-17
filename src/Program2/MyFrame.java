@@ -8,6 +8,8 @@ public class MyFrame extends JFrame {
   //       1(null)      sud(flow)       central(griglia)
     JPanel imagePanel, barraBottoniPanel, centralPanel, CBeBT, cbPpanel, butPanel;
     JComboBox cbBrani;
+    JLabel logoLabel;
+    ImageIcon image;
     public MyFrame(String titolo, ArrayList brani) {
         setTitle(titolo);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,7 +26,14 @@ public class MyFrame extends JFrame {
         //Pannello dell'immagine
         imagePanel = new JPanel();
         imagePanel.setBackground(new Color(17, 0, 255));
+
+        logoLabel = new JLabel();
+        image = new ImageIcon(Main.path + "img_1.png");
+        logoLabel.setIcon(image);
+
         centralPanel.add(imagePanel);
+        imagePanel.add(logoLabel);
+
 
         //Pannello contenitore della combo Box e del pulsante
         CBeBT = new JPanel();
