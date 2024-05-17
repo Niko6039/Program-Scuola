@@ -33,6 +33,7 @@ public class Main {
             System.out.println(e);
             e.printStackTrace();
         }
+        MyFrame frame = new MyFrame("Spotify", Brani);
 
     }
 }
