@@ -1,10 +1,14 @@
 package Program2;
 
 import javax.swing.*;
+import javax.swing.text.Element;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.annotation.ElementType;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class MyFrame extends JFrame {
   //       1(null)      sud(flow)       central(griglia)
@@ -12,7 +16,7 @@ public class MyFrame extends JFrame {
     JComboBox cbBrani;
     JLabel logoLabel;
     ImageIcon image;
-    JButton pushButton, aggiuntiBrano, visualizzaBrano;
+    JButton pushButton, aggiungiBrano, visualizzaBrano;
     public MyFrame(String titolo, ArrayList brani) {
         setTitle(titolo);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,30 +53,34 @@ public class MyFrame extends JFrame {
 
         cbBrani = new JComboBox<>();
         String nome="", nomeBrano;
-        System.out.println(nome);
         DefaultComboBoxModel allBrani = new DefaultComboBoxModel();
-        for (int i = 0; i < brani.size(); i++) {
+        for (int i = 0; i < brani.size(); i++) {//devo usare una array invece di una stringa
             nome = brani.get(i).toString().split(", ")[0];
-            nomeBrano = nome.substring(nome.indexOf("Nome del brano; ")+15, nome.length());
+            nomeBrano = nome.substring(nome.indexOf("Nome del brano; ") + 16, nome.length()-1);
             allBrani.addElement(nomeBrano);
-
         }
         cbBrani.setModel(allBrani);
         cbPpanel.add(cbBrani);
         CBeBT.add(cbPpanel);
 
-        //Pannello per il pulsate push della pila
+        //Pannello per il pulsate push della coda
         butPanel = new JPanel();
         butPanel.setBackground(new Color(184, 138, 25));
         butPanel.setLayout(new FlowLayout());
+
+        //Creazione della coda
+        Queue queue = new LinkedList<>();
+
         //Set Bottone Push
         pushButton = new JButton("Push");
         pushButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
+            public void actionPerformed(ActionEvent e) {// trovo nella arraylist in nome
+                queue.add(allBrani.getSelectedItem());
+                System.out.println(queue.toString());
             }
         });
         CBeBT.add(butPanel);
+        butPanel.add(pushButton);
 
         //----------------------------------------------------------------------
         //Barra Bottoni qui verrano inseriti i vari bottoni
@@ -80,7 +88,7 @@ public class MyFrame extends JFrame {
         barraBottoniPanel.setLayout(new FlowLayout());
         barraBottoniPanel.setBackground(new Color(200, 100, 132));
 
-        JButton aggiungiBrano = new JButton("Aggiungi");
+        aggiungiBrano = new JButton("Aggiungi");
         //Aggiungi un brano a mano
         aggiungiBrano.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -91,17 +99,14 @@ public class MyFrame extends JFrame {
         barraBottoniPanel.add(aggiungiBrano);
 
         //Visualizza i Brani (Con un dialog)
-        JButton visualizzaBrano = new JButton("Visualizza");
+        visualizzaBrano = new JButton("Visualizza");
         visualizzaBrano.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                Playlist playlist = new Playlist(queue);
             }
         });
         barraBottoniPanel.add(visualizzaBrano);
-
         add(barraBottoniPanel, BorderLayout.SOUTH);
-
-
         setVisible(true);
     }
 }

@@ -33,7 +33,6 @@ public class Main {
             System.out.println(e);
             e.printStackTrace();
         }
-        System.out.println(brani.get(0).toString());
         MyFrame frame = new MyFrame("Spotify", brani);
 
     }

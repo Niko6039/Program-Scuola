@@ -2,12 +2,16 @@ package Program2;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class myDialogAggiungiFile extends JDialog {
     JPanel barraBottoni, panelDati;
     JLabel nome, artista, genere;
     JTextField txtNome, txtArtista, txtGenere;
+    JButton btnAggiungi, btnCancelar;
     public myDialogAggiungiFile(ArrayList brani,DefaultComboBoxModel nuovoBrano) {
         setTitle("Aggiungi File");
         setSize(300, 300);
@@ -18,21 +22,17 @@ public class myDialogAggiungiFile extends JDialog {
         panelDati = new JPanel();
         panelDati.setLayout(new GridLayout(3, 21));
         add(panelDati, BorderLayout.CENTER);
-        panelDati.setBackground(new Color(29, 218, 99));
         //add Nome
         nome = new JLabel("Nome brano", JLabel.CENTER);
         txtNome = new JTextField();
-        txtNome.setBackground(new Color(29, 218, 99));
 
         //add Artista
         artista = new JLabel("Artista", JLabel.CENTER);
         txtArtista = new JTextField();
-        txtArtista.setBackground(new Color(29, 218, 99));
         //add genere
         genere = new JLabel("Genere", JLabel.CENTER);
         txtGenere = new JTextField();
         txtGenere.setLayout(new FlowLayout());
-        txtGenere.setBackground(new Color(29, 218, 99));
 
         panelDati.add(nome);
         panelDati.add(txtNome);
@@ -43,9 +43,29 @@ public class myDialogAggiungiFile extends JDialog {
 
         //Barra bottoni sotto
         barraBottoni = new JPanel();
-        barraBottoni.setLayout(new BorderLayout());
+        barraBottoni.setLayout(new FlowLayout());
         add(barraBottoni, BorderLayout.SOUTH);
+        btnAggiungi = new JButton("Aggiungi");
+        btnAggiungi.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    FileWriter fw = new FileWriter("brani.txt",true);
+                    fw.write("Nome del brano; "+txtNome.getText()+ ":Artista;" + txtArtista.getText() +":Genere;"+txtGenere+":");
+                    fw.close();
+                }catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        barraBottoni.add(btnAggiungi);
 
+        btnCancelar = new JButton("Cancella");
+        btnCancelar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        });
+        barraBottoni.add(btnCancelar);
 
         setVisible(true);
     }
