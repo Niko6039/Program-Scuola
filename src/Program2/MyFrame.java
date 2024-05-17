@@ -26,13 +26,13 @@ public class MyFrame extends JFrame {
 
         //Pannello Centrale contiene tutti i elementi importanti
         centralPanel = new JPanel();
-        centralPanel.setBackground(new Color(199, 0, 255));
+        centralPanel.setBackground(new Color(16, 188, 76));
         centralPanel.setLayout(new FlowLayout());
         add(centralPanel, BorderLayout.CENTER);
 
         //Pannello dell'immagine
         imagePanel = new JPanel();
-        imagePanel.setBackground(new Color(17, 0, 255));
+        imagePanel.setBackground(new Color(16, 188, 76));
         logoLabel = new JLabel();
         image = new ImageIcon(Main.path + "img_1.png");
         logoLabel.setIcon(image);
@@ -43,20 +43,20 @@ public class MyFrame extends JFrame {
         //Pannello contenitore della combo Box e del pulsante
         CBeBT = new JPanel();
         CBeBT.setLayout(new GridLayout(2,1));
-        CBeBT.setBackground(new Color(255, 12, 143));
+        CBeBT.setBackground(new Color(16, 188, 76));
         centralPanel.add(CBeBT);
 
         //Pannello per la Combo Box
         cbPpanel = new JPanel();
         cbPpanel.setLayout(new FlowLayout());
-        cbPpanel.setBackground(new Color(155, 23, 225));
+        cbPpanel.setBackground(new Color(16, 188, 76));
 
         cbBrani = new JComboBox<>();
         String nome="", nomeBrano;
         DefaultComboBoxModel allBrani = new DefaultComboBoxModel();
         for (int i = 0; i < brani.size(); i++) {//devo usare una array invece di una stringa
-            nome = brani.get(i).toString().split(": ")[0];
-            nomeBrano = nome.substring(nome.indexOf("Nome del brano; ") + 16, nome.length()-1);
+            nome = brani.get(i).toString().split(":")[0];
+            nomeBrano = nome.substring (nome.indexOf("Nome del brano; ") + 15, nome.length()-1);
             allBrani.addElement(nomeBrano);
         }
         cbBrani.setModel(allBrani);
@@ -65,7 +65,7 @@ public class MyFrame extends JFrame {
 
         //Pannello per il pulsate push della coda
         butPanel = new JPanel();
-        butPanel.setBackground(new Color(184, 138, 25));
+        butPanel.setBackground(new Color(16, 188, 76));
         butPanel.setLayout(new FlowLayout());
 
         //Creazione della coda
@@ -86,7 +86,7 @@ public class MyFrame extends JFrame {
         //Barra Bottoni qui verrano inseriti i vari bottoni
         barraBottoniPanel = new JPanel();
         barraBottoniPanel.setLayout(new FlowLayout());
-        barraBottoniPanel.setBackground(new Color(200, 100, 132));
+        barraBottoniPanel.setBackground(new Color(16, 188, 76));
 
         aggiungiBrano = new JButton("Aggiungi");
         //Aggiungi un brano a mano
@@ -110,6 +110,7 @@ public class MyFrame extends JFrame {
         setVisible(true);
     }
     static void setComboBox(String nome, JComboBox combo, DefaultComboBoxModel allBrani){
+        nome = "Nome del brano; " + nome;
         allBrani.addElement(nome);
         combo.setModel(allBrani);
     }
