@@ -1,2 +1,0 @@
-Nome: Nicolo', Cognome: Tauro, Matricula: 12345, Email: nicolo.tauro@lol.it
-Nome: Vicenzo, Cognome: Sardella, Matricula: 12f4e34, Email: vincenzo.sardella@lol.it,sdaf

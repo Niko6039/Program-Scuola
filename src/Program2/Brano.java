@@ -24,6 +24,6 @@ public class Brano {
         return genere;
     }
     public String toString() {
-        return nomeBrano + ", " + artista + ", " + genere;
+        return "Nome del brano; "+ nomeBrano + " :Artista; " + artista +" :Genere; "+ genere +" :";
     }
 }

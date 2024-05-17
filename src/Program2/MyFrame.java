@@ -55,7 +55,7 @@ public class MyFrame extends JFrame {
         String nome="", nomeBrano;
         DefaultComboBoxModel allBrani = new DefaultComboBoxModel();
         for (int i = 0; i < brani.size(); i++) {//devo usare una array invece di una stringa
-            nome = brani.get(i).toString().split(", ")[0];
+            nome = brani.get(i).toString().split(": ")[0];
             nomeBrano = nome.substring(nome.indexOf("Nome del brano; ") + 16, nome.length()-1);
             allBrani.addElement(nomeBrano);
         }
@@ -92,7 +92,7 @@ public class MyFrame extends JFrame {
         //Aggiungi un brano a mano
         aggiungiBrano.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                myDialogAggiungiFile dialog1 = new myDialogAggiungiFile(brani,allBrani);
+                myDialogAggiungiFile dialog1 = new myDialogAggiungiFile(brani, allBrani, cbBrani);
 
             }
         });
@@ -108,5 +108,9 @@ public class MyFrame extends JFrame {
         barraBottoniPanel.add(visualizzaBrano);
         add(barraBottoniPanel, BorderLayout.SOUTH);
         setVisible(true);
+    }
+    static void setComboBox(String nome, JComboBox combo, DefaultComboBoxModel allBrani){
+        allBrani.addElement(nome);
+        combo.setModel(allBrani);
     }
 }

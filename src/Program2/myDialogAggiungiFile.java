@@ -12,7 +12,7 @@ public class myDialogAggiungiFile extends JDialog {
     JLabel nome, artista, genere;
     JTextField txtNome, txtArtista, txtGenere;
     JButton btnAggiungi, btnCancelar;
-    public myDialogAggiungiFile(ArrayList brani,DefaultComboBoxModel nuovoBrano) {
+    public myDialogAggiungiFile(ArrayList brani,DefaultComboBoxModel nuovoBrano, JComboBox comboBox) {
         setTitle("Aggiungi File");
         setSize(300, 300);
         setModal(true);
@@ -49,9 +49,11 @@ public class myDialogAggiungiFile extends JDialog {
         btnAggiungi.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FileWriter fw = new FileWriter("brani.txt",true);
-                    fw.write("Nome del brano; "+txtNome.getText()+ ":Artista;" + txtArtista.getText() +":Genere;"+txtGenere+":");
+                    FileWriter fw = new FileWriter(Main.path + "braniSave",true);
+                    fw.write("Nome del brano; "+txtNome.getText()+ " :Artista; " + txtArtista.getText() +" :Genere; "+ txtGenere.getText() +" :\n");
+                    MyFrame.setComboBox(txtNome.getText(), comboBox, nuovoBrano);
                     fw.close();
+                    setVisible(false);
                 }catch (Exception e1) {
                     e1.printStackTrace();
                 }
