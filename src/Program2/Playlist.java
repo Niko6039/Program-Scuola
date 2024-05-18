@@ -1,16 +1,15 @@
 package Program2;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Queue;
 
 public class Playlist extends JDialog {
-    JButton Aventi,Cancel;
-    JLabel testo, logoLabel;
-    JPanel imagePanel;
+    JButton aventi,Cancel;
+    JLabel logoLabel, txtNome, txtArtista, txtGenre,nomePanel, artistaPanel, generePanel;
+    JPanel imagePanel, testoPanel;
     ImageIcon image;
     public Playlist(Queue coda) {
         setTitle("Playlist");
@@ -26,30 +25,83 @@ public class Playlist extends JDialog {
         logoLabel.setIcon(image);
         add(logoLabel, BorderLayout.WEST);
 
-        testo = new JLabel();
+        testoPanel = new JPanel();
+        testoPanel.setLayout(new GridLayout(6,1));
+        txtNome = new JLabel();
+        txtArtista = new JLabel();
+        txtGenre = new JLabel();
+
+        nomePanel = new JLabel();
+        nomePanel.setText("Nome");
+        artistaPanel = new JLabel();
+        artistaPanel.setText("Artista");
+        generePanel = new JLabel();
+        generePanel.setText("Genere");
+
+        String nome, artista, genere;
         if(coda.isEmpty()!=true){
-            testo.setText(coda.poll().toString());
+            String text = coda.poll().toString();
+            nome = text.toString().split(":")[0];
+            nome = nome.substring(nome.indexOf("Nome del brano; ") + 16, nome.indexOf("*"));
+            txtNome.setText(nome + "\n");
+
+            artista = text.split(":")[1];
+            artista = artista.substring(artista.indexOf("Artista; ") +9 , artista.indexOf("*"));
+            txtArtista.setText(artista + "\n");
+
+            genere = text.split(":")[2];
+            genere = genere.substring(genere.indexOf("Artista; ") +8 , genere.indexOf("*"));
+            txtGenre.setText(genere + "\n");
+
         }
 
-        Aventi = new JButton("Aventi");
+        aventi = new JButton("Aventi");
         JPanel panel = new JPanel();
-        panel.add(Aventi);
+        panel.add(aventi);
         panel.setBackground(new Color(16, 188, 76));
         add(panel, BorderLayout.SOUTH);
 
-        Aventi.addActionListener(new ActionListener() {
+        aventi.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (coda.isEmpty()!=true){
                     System.out.println(coda.peek().toString());
-                    testo.setText(coda.poll().toString());
+                    String text = coda.poll().toString();
+
+                    String nome = text.toString().split(":")[0];
+                    nome = nome.substring(nome.indexOf("Nome del brano; ") + 16, nome.indexOf("*"));
+                    txtNome.setText(nome + "\n");
+
+                    String artista = text.split(":")[1];
+                    artista = artista.substring(artista.indexOf("Artista; ") +9 , artista.indexOf("*"));
+                    txtArtista.setText(artista + "\n");
+
+                    String genere = text.split(":")[2];
+                    genere = genere.substring(genere.indexOf("Artista; ") +8 , genere.indexOf("*"));
+                    txtGenre.setText(genere + "\n");
                 }else{
-                    testo.setText("");
+                    txtNome.setText("");
+                    txtArtista.setText("");
+                    txtGenre.setText("");
+
                     add(logoLabel, BorderLayout.CENTER);
 
                 }
             }
         });
-        add(testo, BorderLayout.CENTER);
+        add(aventi, BorderLayout.SOUTH);
+        add();
+        add(testoPanel, BorderLayout.CENTER);
+        testoPanel.setBackground(new Color(16, 188, 76));
+
+        testoPanel.add(nomePanel);
+        testoPanel.add(txtNome);
+
+        testoPanel.add(artistaPanel);
+        testoPanel.add(txtArtista);
+
+        testoPanel.add(generePanel);
+        testoPanel.add(txtGenre);
+
         setVisible(true);
     }
 }

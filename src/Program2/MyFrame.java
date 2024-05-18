@@ -55,8 +55,8 @@ public class MyFrame extends JFrame {
         String nome="", nomeBrano;
         DefaultComboBoxModel allBrani = new DefaultComboBoxModel();
         for (int i = 0; i < brani.size(); i++) {//devo usare una array invece di una stringa
-            nome = brani.get(i).toString().split(":")[0];
-            nomeBrano = nome.substring (nome.indexOf("Nome del brano; ") + 15, nome.length()-1);
+            nome = brani.get(i).toString().split(" :")[0];
+            nomeBrano = nome.substring(nome.indexOf("Nome del brano; ") + 15, nome.length()-1);
             allBrani.addElement(nomeBrano);
         }
         cbBrani.setModel(allBrani);
@@ -75,7 +75,7 @@ public class MyFrame extends JFrame {
         pushButton = new JButton("Push");
         pushButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {// trovo nella arraylist in nome
-                queue.add(allBrani.getSelectedItem());
+                queue.add(brani.get(cbBrani.getSelectedIndex()));
                 System.out.println(queue.toString());
             }
         });
