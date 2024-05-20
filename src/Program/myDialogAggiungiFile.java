@@ -19,17 +19,16 @@ public class myDialogAggiungiFile extends JDialog {
     JButton btnAggiungi, btnCancelar;
     public myDialogAggiungiFile(ArrayList brani,DefaultComboBoxModel nuovoBrano, JComboBox comboBox) {
         setTitle("Aggiungi File");
-        setSize(400, 350);
+        setSize(350, 375);
         setModal(true);
         setLayout(new BorderLayout());
-        //setLocation();
-        setLocation(new Point(500,400));
+        setLocationRelativeTo(null);
         setBackground(new Color(16, 188, 76));
 
         //set image
         imagePanel = new JPanel();
         image = new JLabel();
-        imageIcon = new ImageIcon(Main.path + "img2.png");
+        imageIcon = new ImageIcon(Main.path + "img3.png");
         image.setIcon(imageIcon);
         image.setHorizontalAlignment(SwingConstants.CENTER);
         imagePanel.add(image);

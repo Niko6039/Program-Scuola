@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 import java.util.Queue;
 
 public class Playlist extends JDialog {
@@ -14,8 +15,8 @@ public class Playlist extends JDialog {
     public Playlist(Queue coda) {
         setTitle("Playlist");
         setModal(true);
-        setLocationRelativeTo(null);
         setSize(350,200);
+        setLocationRelativeTo(null);
         setBackground(new Color(16, 188, 76));
 
         imagePanel = new JPanel();
@@ -44,7 +45,20 @@ public class Playlist extends JDialog {
         generePanel.setText("Genere");
         generePanel.setHorizontalAlignment(SwingConstants.CENTER);
 
+        testoPanel.add(nomePanel);
+        testoPanel.add(txtNome);
+
+        testoPanel.add(artistaPanel);
+        testoPanel.add(txtArtista);
+
+        testoPanel.add(generePanel);
+        testoPanel.add(txtGenre);
+
         String nome, artista, genere,text = "";
+        final Boolean[] var = {true};// set del valore di chiusura del programma, si usa l'array perche una variab bool non puo essere modificata in questo caso
+
+        aventi = new JButton("Aventi");
+
         if(!coda.isEmpty()){
             text = coda.poll().toString();
             nome = text.toString().split(":")[0];
@@ -62,15 +76,25 @@ public class Playlist extends JDialog {
             txtGenre.setText(genere + "\n");
             txtGenre.setHorizontalAlignment(SwingConstants.CENTER);
 
+        }else{
+            txtNome.setText("");
+            nomePanel.setText("");
+            txtArtista.setText("");
+            artistaPanel.setText("");
+            txtGenre.setText("");
+            generePanel.setText("");
+            testoPanel.setLayout(new BorderLayout());
+            testoPanel.add(imagePanel, BorderLayout.CENTER);
+            setSize(350,200);
+            setLocationRelativeTo(null);
+            aventi = new JButton("Chiudi");
+
         }
 
-        aventi = new JButton("Aventi");
         JPanel panel = new JPanel();
         panel.add(aventi);
         panel.setBackground(new Color(16, 188, 76));
         add(panel, BorderLayout.SOUTH);
-
-        final Boolean[] var = {true};// set del valore di chiusura del programma, si usa l'array perche una variab bool non puo essere modificata in questo caso
 
         aventi.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -89,11 +113,18 @@ public class Playlist extends JDialog {
                     String genere = text.split(":")[2];
                     genere = genere.substring(genere.indexOf("Artista; ") +8 , genere.indexOf("*"));
                     txtGenre.setText(genere + "\n");
+
                 }else if (var[0]){
+
                     txtNome.setText("");
+                    nomePanel.setText("");
                     txtArtista.setText("");
+                    artistaPanel.setText("");
                     txtGenre.setText("");
-                    add(imagePanel, BorderLayout.WEST);
+                    generePanel.setText("");
+                    testoPanel.setLayout(new BorderLayout());
+                    testoPanel.add(imagePanel, BorderLayout.CENTER);
+                    setSize(350,200);
                     aventi.setText("Chiudi");
                     var[0] = false;
                 }else {//Chiusura
@@ -106,14 +137,7 @@ public class Playlist extends JDialog {
         add(testoPanel, BorderLayout.CENTER);
         testoPanel.setBackground(new Color(16, 188, 76));
 
-        testoPanel.add(nomePanel);
-        testoPanel.add(txtNome);
 
-        testoPanel.add(artistaPanel);
-        testoPanel.add(txtArtista);
-
-        testoPanel.add(generePanel);
-        testoPanel.add(txtGenre);
 
         setVisible(true);
     }
