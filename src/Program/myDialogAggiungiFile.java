@@ -11,18 +11,38 @@ public class myDialogAggiungiFile extends JDialog {
     JPanel barraBottoni, panelDati;
     JLabel nome, artista, genere;
     JTextField txtNome, txtArtista, txtGenere;
+
+    JPanel imagePanel;
+    JLabel image;
+    ImageIcon imageIcon;
+
     JButton btnAggiungi, btnCancelar;
     public myDialogAggiungiFile(ArrayList brani,DefaultComboBoxModel nuovoBrano, JComboBox comboBox) {
         setTitle("Aggiungi File");
-        setSize(300, 300);
+        setSize(400, 350);
         setModal(true);
         setLayout(new BorderLayout());
-        setLocationRelativeTo(null);
+        //setLocation();
+        setLocation(new Point(500,400));
+        setBackground(new Color(16, 188, 76));
 
+        //set image
+        imagePanel = new JPanel();
+        image = new JLabel();
+        imageIcon = new ImageIcon(Main.path + "img2.png");
+        image.setIcon(imageIcon);
+        image.setHorizontalAlignment(SwingConstants.CENTER);
+        imagePanel.add(image);
+        imagePanel.setBackground(new Color(16, 188, 76));
+        add(imagePanel, BorderLayout.NORTH);
+
+
+        //Set pannello che contine in nome, artista e genere
         panelDati = new JPanel();
         panelDati.setBackground(new Color(16, 188, 76));
         panelDati.setLayout(new GridLayout(3, 21));
         add(panelDati, BorderLayout.CENTER);
+
         //add Nome
         nome = new JLabel("Nome brano", JLabel.CENTER);
         txtNome = new JTextField();

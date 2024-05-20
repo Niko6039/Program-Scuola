@@ -23,7 +23,8 @@ public class Playlist extends JDialog {
         logoLabel = new JLabel();
         image = new ImageIcon(Main.path + "img2.png");
         logoLabel.setIcon(image);
-        add(logoLabel, BorderLayout.WEST);
+        imagePanel.add(logoLabel);
+        add(imagePanel, BorderLayout.WEST);
 
         testoPanel = new JPanel();
         testoPanel.setLayout(new GridLayout(6,1));
@@ -34,16 +35,18 @@ public class Playlist extends JDialog {
         nomePanel = new JLabel();
         nomePanel.setText("Nome");
         nomePanel.setHorizontalAlignment(SwingConstants.CENTER);
+
         artistaPanel = new JLabel();
         artistaPanel.setText("Artista");
         artistaPanel.setHorizontalAlignment(SwingConstants.CENTER);
-        generePanel = new JLabel();
-        generePanel.setHorizontalAlignment(SwingConstants.CENTER);
-        generePanel.setText("Genere");
 
-        String nome, artista, genere;
+        generePanel = new JLabel();
+        generePanel.setText("Genere");
+        generePanel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        String nome, artista, genere,text = "";
         if(!coda.isEmpty()){
-            String text = coda.poll().toString();
+            text = coda.poll().toString();
             nome = text.toString().split(":")[0];
             nome = nome.substring(nome.indexOf("Nome del brano; ") + 16, nome.indexOf("*"));
             txtNome.setText(nome + "\n");
@@ -90,7 +93,7 @@ public class Playlist extends JDialog {
                     txtNome.setText("");
                     txtArtista.setText("");
                     txtGenre.setText("");
-                    add(logoLabel, BorderLayout.CENTER);
+                    add(imagePanel, BorderLayout.WEST);
                     aventi.setText("Chiudi");
                     var[0] = false;
                 }else {//Chiusura
