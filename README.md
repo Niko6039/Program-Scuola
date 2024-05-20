@@ -7,3 +7,6 @@ dato da fare e ho creato questo programma.
 
 
 P.S.  Il programma ho avuto successo ho preso 8.5
+
+Scaricare un compilatore di Java, e poi scaricare il progratto e avviare 
+src/Program/Main.java
