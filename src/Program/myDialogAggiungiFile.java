@@ -1,4 +1,4 @@
-package Program2;
+package Program;
 
 import javax.swing.*;
 import java.awt.*;
