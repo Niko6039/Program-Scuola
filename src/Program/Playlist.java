@@ -42,7 +42,7 @@ public class Playlist extends JDialog {
         generePanel.setText("Genere");
 
         String nome, artista, genere;
-        if(coda.isEmpty()!=true){
+        if(!coda.isEmpty()){
             String text = coda.poll().toString();
             nome = text.toString().split(":")[0];
             nome = nome.substring(nome.indexOf("Nome del brano; ") + 16, nome.indexOf("*"));
@@ -71,7 +71,7 @@ public class Playlist extends JDialog {
 
         aventi.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (coda.isEmpty()!=true){
+                if (!coda.isEmpty()){
                     System.out.println(coda.peek().toString());
                     String text = coda.poll().toString();
 
@@ -92,7 +92,7 @@ public class Playlist extends JDialog {
                     txtGenre.setText("");
                     add(logoLabel, BorderLayout.CENTER);
                     aventi.setText("Chiudi");
-                    var[0] = (boolean) (false);
+                    var[0] = false;
                 }else {//Chiusura
                     setVisible(false);
                 }
