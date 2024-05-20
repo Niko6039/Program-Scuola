@@ -20,19 +20,26 @@ public class myDialogAggiungiFile extends JDialog {
         setLocationRelativeTo(null);
 
         panelDati = new JPanel();
+        panelDati.setBackground(new Color(16, 188, 76));
         panelDati.setLayout(new GridLayout(3, 21));
         add(panelDati, BorderLayout.CENTER);
         //add Nome
         nome = new JLabel("Nome brano", JLabel.CENTER);
         txtNome = new JTextField();
+        txtNome.setBackground(new Color(16, 188, 76));
+        txtNome.setHorizontalAlignment(SwingConstants.CENTER);
 
         //add Artista
         artista = new JLabel("Artista", JLabel.CENTER);
         txtArtista = new JTextField();
+        txtArtista.setBackground(new Color(16, 188, 76));
+        txtArtista.setHorizontalAlignment(SwingConstants.CENTER);
+
         //add genere
         genere = new JLabel("Genere", JLabel.CENTER);
         txtGenere = new JTextField();
-        txtGenere.setLayout(new FlowLayout());
+        txtGenere.setBackground(new Color(16, 188, 76));
+        txtGenere.setHorizontalAlignment(SwingConstants.CENTER);
 
         //Set layout
         panelDati.add(nome);
@@ -51,8 +58,13 @@ public class myDialogAggiungiFile extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     FileWriter fw = new FileWriter(Main.path + "braniSave",true);
-                    fw.write("Nome del brano; "+txtNome.getText()+ " :Artista; " + txtArtista.getText() +" :Genere; "+ txtGenere.getText() +" :\n");
+                    fw.write("Nome del brano; "+txtNome.getText()+ "* :Artista; " + txtArtista.getText() +"* :Genere; "+ txtGenere.getText() +"*:\n");
                     MyFrame.setComboBox(txtNome.getText(), comboBox, nuovoBrano);
+                    Brano br = new Brano();
+                    br.setNomeBrano(txtNome.getText());
+                    br.setArtista(txtArtista.getText());
+                    br.setGenere(txtGenere.getText());
+                    brani.add(br);
                     fw.close();
                     setVisible(false);
                 }catch (Exception e1) {

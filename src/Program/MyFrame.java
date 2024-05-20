@@ -108,7 +108,6 @@ public class MyFrame extends JFrame {
         setVisible(true);
     }
     static void setComboBox(String nome, JComboBox combo, DefaultComboBoxModel allBrani){
-        nome = "Nome del brano; " + nome;
         allBrani.addElement(nome);
         combo.setModel(allBrani);
     }
