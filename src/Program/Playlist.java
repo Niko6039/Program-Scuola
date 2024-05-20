@@ -31,7 +31,6 @@ public class Playlist extends JDialog {
         txtArtista = new JLabel();
         txtGenre = new JLabel();
 
-
         nomePanel = new JLabel();
         nomePanel.setText("Nome");
         nomePanel.setHorizontalAlignment(SwingConstants.CENTER);
