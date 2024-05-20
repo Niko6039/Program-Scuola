@@ -31,11 +31,15 @@ public class Playlist extends JDialog {
         txtArtista = new JLabel();
         txtGenre = new JLabel();
 
+
         nomePanel = new JLabel();
         nomePanel.setText("Nome");
+        nomePanel.setHorizontalAlignment(SwingConstants.CENTER);
         artistaPanel = new JLabel();
         artistaPanel.setText("Artista");
+        artistaPanel.setHorizontalAlignment(SwingConstants.CENTER);
         generePanel = new JLabel();
+        generePanel.setHorizontalAlignment(SwingConstants.CENTER);
         generePanel.setText("Genere");
 
         String nome, artista, genere;
@@ -44,14 +48,17 @@ public class Playlist extends JDialog {
             nome = text.toString().split(":")[0];
             nome = nome.substring(nome.indexOf("Nome del brano; ") + 16, nome.indexOf("*"));
             txtNome.setText(nome + "\n");
+            txtNome.setHorizontalAlignment(SwingConstants.CENTER);
 
             artista = text.split(":")[1];
             artista = artista.substring(artista.indexOf("Artista; ") +9 , artista.indexOf("*"));
             txtArtista.setText(artista + "\n");
+            txtArtista.setHorizontalAlignment(SwingConstants.CENTER);
 
             genere = text.split(":")[2];
             genere = genere.substring(genere.indexOf("Artista; ") +8 , genere.indexOf("*"));
             txtGenre.setText(genere + "\n");
+            txtGenre.setHorizontalAlignment(SwingConstants.CENTER);
 
         }
 
@@ -60,6 +67,8 @@ public class Playlist extends JDialog {
         panel.add(aventi);
         panel.setBackground(new Color(16, 188, 76));
         add(panel, BorderLayout.SOUTH);
+
+        final Boolean[] var = {true};// set del valore di chiusura del programma, si usa l'array perche una variab bool non puo essere modificata in questo caso
 
         aventi.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -78,18 +87,20 @@ public class Playlist extends JDialog {
                     String genere = text.split(":")[2];
                     genere = genere.substring(genere.indexOf("Artista; ") +8 , genere.indexOf("*"));
                     txtGenre.setText(genere + "\n");
-                }else{
+                }else if (var[0]){
                     txtNome.setText("");
                     txtArtista.setText("");
                     txtGenre.setText("");
-
                     add(logoLabel, BorderLayout.CENTER);
-
+                    aventi.setText("Chiudi");
+                    var[0] = (boolean) (false);
+                }else {//Chiusura
+                    setVisible(false);
                 }
             }
         });
         add(aventi, BorderLayout.SOUTH);
-        add();
+
         add(testoPanel, BorderLayout.CENTER);
         testoPanel.setBackground(new Color(16, 188, 76));
 
