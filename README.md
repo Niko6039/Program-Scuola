@@ -5,8 +5,6 @@ Questo programma l'ho creato da zero ho avuto due giorni prima che la professore
 sarebbero stati di sabato (due giorni dopo) e gli ultimi giorni prima di iniziare scuola lavoro (sempre di sabato e venerdi), sapendo che TUTTI sarebbero andati di sabato prossimo mi sono 
 dato da fare e ho creato questo programma. 
 
+Scaricare un compilatore di Java, e poi scaricare il progratto e avviare src/Program/Main.java
 
 P.S.  Il programma ho avuto successo ho preso 8.5
-
-Scaricare un compilatore di Java, e poi scaricare il progratto e avviare 
-src/Program/Main.java
